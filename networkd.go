@@ -74,3 +74,11 @@ func (n *Networkd) LinkFromInterfaceName(name string) (*Link, error) {
 func (n *Networkd) ReconfigureLink(index int) error {
 	return n.sysObj.Call(managerPath+".ReconfigureLink", 0, index).Err
 }
+
+func (n *Networkd) Reload() error {
+	return n.sysObj.Call(managerPath+".Reload", 0).Err
+}
+
+func (n *Networkd) RenewLink(index int) error {
+	return n.sysObj.Call(managerPath+".RenewLink", 0, index).Err
+}
