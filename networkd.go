@@ -6,7 +6,6 @@ import (
 
 	"github.com/godbus/dbus/v5"
 	"github.com/godbus/dbus/v5/introspect"
-	"github.com/vishvananda/netlink"
 )
 
 var (
@@ -72,6 +71,6 @@ func (n *Networkd) LinkFromInterfaceName(name string) (*Link, error) {
 	return nil, errors.New("not found")
 }
 
-func (n *Networkd) ReconfigureLink(nd *netlink.Device) {
-	//n.sysObj.Call("")
+func (n *Networkd) ReconfigureLink(index int) error {
+	return n.sysObj.Call(managerPath+".ReconfigureLink", 0, index).Err
 }

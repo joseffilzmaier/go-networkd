@@ -30,3 +30,10 @@ func TestReconfigureWlan0(t *testing.T) {
 	}
 	l.Reconfigure()
 }
+
+func TestReconfigureLink(t *testing.T) {
+	err := n.ReconfigureLink(2)
+	if err != nil {
+		t.Error(err)
+	}
+}
